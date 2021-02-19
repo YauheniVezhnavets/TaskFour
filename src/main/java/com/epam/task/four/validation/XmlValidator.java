@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class XmlValidator {
 
-  //  private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger(XmlValidator.class);
     private String xsdSchema;
 
 
@@ -39,16 +39,13 @@ public class XmlValidator {
             parser.parse(filename, new MedicineExceptionHandler());
             return true;
         } catch (ParserConfigurationException e) {
-       //     e.printStackTrace();
-          //  LOGGER.error(filename + " config error: " + e.getMessage(),e);
+            LOGGER.error(filename + " config error: " + e.getMessage(),e);
             return false;
         } catch (SAXException e) {
-      //      e.printStackTrace();
-       //     LOGGER.error(filename + " SAX error: " + e.getMessage(),e);
+            LOGGER.error(filename + " SAX error: " + e.getMessage(),e);
             return false;
         } catch (IOException e) {
-   //         e.printStackTrace();
-      //      LOGGER.error("I/O error: " + e.getMessage(),e);
+           LOGGER.error("I/O error: " + e.getMessage(),e);
             return false;
         }
     }

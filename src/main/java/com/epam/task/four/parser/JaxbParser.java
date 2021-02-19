@@ -16,7 +16,7 @@ import java.io.File;
 import java.util.List;
 
 public class JaxbParser implements Parser {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger(JaxbParser.class);
     private static final String SCHEMA_NAME = "src/main/resources/medicines.xsd";
 
 

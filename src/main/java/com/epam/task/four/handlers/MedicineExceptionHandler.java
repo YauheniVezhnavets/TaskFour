@@ -8,7 +8,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class MedicineExceptionHandler extends DefaultHandler {
 
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger(MedicineHandler.class);
 
 
     public void warning(SAXParseException e) {

@@ -5,7 +5,6 @@ public class ParserFactory {
 
     public Parser create (ParserType type) {
 
-
         switch (type) {
             case DOM_PARSER:
                 return new DomParser();

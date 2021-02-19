@@ -1,0 +1,65 @@
+<?xml version= "1.0" encoding= "UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/medicines"
+        xmlns:tns="http://www.example.com/medicines"
+        elementFormDefault="qualified">
+
+    <element name="medicines">
+        <complexType>
+            <sequence>
+                <element name="pill" type="tns:Pill" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="syrup" type="tns:Syrup" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="flavored-syrup" type="tns:FlavoredSyrup" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Medicine">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="medicine-group" type="tns:MedicineGroup"/>
+            <element name="shelf-life" type="positiveInteger"/>
+        </sequence>
+    </complexType>
+    <complexType name="Pill">
+        <complexContent>
+            <extension base="tns:Medicine">
+                <sequence>
+                    <element name="dosage-milligrams" type="positiveInteger"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="Syrup">
+        <complexContent>
+            <extension base="tns:Medicine">
+                <sequence>
+                    <element name="volume-milliliters" type="positiveInteger"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="FlavoredSyrup">
+        <complexContent>
+            <extension base="tns:Syrup">
+                <sequence>
+                    <element name="flavoring-type" type="tns:FlavoringType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <simpleType name="MedicineGroup">
+        <restriction base="string">
+            <enumeration value="VITAMINS"/>
+            <enumeration value="ANTIBIOTICS"/>
+            <enumeration value="PAIN_RELIVERS"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="FlavoringType">
+        <restriction base="string">
+            <enumeration value="LIME"/>
+            <enumeration value="CHERRY"/>
+            <enumeration value="APPLE"/>
+            <enumeration value="ORANGE"/>
+        </restriction>
+    </simpleType>
+</schema>

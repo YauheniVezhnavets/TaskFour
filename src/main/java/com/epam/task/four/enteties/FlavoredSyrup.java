@@ -6,12 +6,12 @@ import com.epam.task.four.enteties.enums.MedicineGroup;
 import javax.xml.bind.annotation.*;
 
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "flavoredSyrup",namespace = "http://www.example.com/medicines")
+@XmlType(name = "flavored-syrup",namespace = "http://www.example.com/medicines")
 public class FlavoredSyrup extends Syrup {
 
-    @XmlElement(name = "flavoring-type", namespace = "http://www.example.com/medicines", required = true)
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "flavoring-type")
     private FlavoringType flavoring;
 
     public FlavoredSyrup() {
@@ -36,7 +36,7 @@ public class FlavoredSyrup extends Syrup {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         if (!super.equals(o)) {

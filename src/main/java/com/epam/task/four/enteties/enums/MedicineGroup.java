@@ -1,16 +1,21 @@
 package com.epam.task.four.enteties.enums;
 
+
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(name = "medicine-group")
+@XmlEnum
 public enum  MedicineGroup {
 
-    VITAMINS, ANTIBIOTICS, PAIN_RELIVERS;
+    @XmlEnumValue("VITAMINS")
+    VITAMINS,
 
-//    private String name;
-//
-//    MedicineGroup(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
+    @XmlEnumValue("ANTIBIOTICS")
+    ANTIBIOTICS,
+
+    @XmlEnumValue("PAIN_RELIVERS")
+    PAIN_RELIVERS;
+
 }

@@ -11,12 +11,15 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName MEDICINE_QNAME =
+            new QName("http://www.example.com/medicines", "Medicine");
+
     private final static QName PILL_QNAME =
-            new QName("http://www.example.com/medicines", "pill");
+            new QName("http://www.example.com/medicines", "Pill");
     private final static QName SYRUP_QNAME =
-            new QName("http://www.example.com/medicines", "syrup");
+            new QName("http://www.example.com/medicines", "Syrup");
     private final static QName FLAVORED_SYRUP_QNAME =
-            new QName("http://www.example.com/medicines", "flavored-syrup");
+            new QName("http://www.example.com/medicines", "FlavoredSyrup");
 
 
     public ObjectFactory() {
@@ -39,22 +42,31 @@ public class ObjectFactory {
     }
 
 
-    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "pill")
-    public JAXBElement<Pill> createPill(Pill value) {
-        return new JAXBElement<Pill>(PILL_QNAME, Pill.class, null, value);
+    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "medicine")
+    public JAXBElement<Medicine> createMedicine(Medicine value) {
+        return new JAXBElement<>(MEDICINE_QNAME, Medicine.class, null, value);
     }
 
-    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "syrup")
 
-    public JAXBElement<Syrup> createSyrup(Syrup value) {
-        return new JAXBElement<Syrup>(SYRUP_QNAME, Syrup.class, null, value);
-    }
-
-    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "flavored-syrup",
+    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "pill",
             substitutionHeadNamespace = "http://www.example.com/medicines",
-            substitutionHeadName = "syrup")
+            substitutionHeadName = "medicine")
+    public JAXBElement<Pill> createPill(Pill value) {
+        return new JAXBElement<>(PILL_QNAME, Pill.class, null, value);
+    }
+
+    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "syrup",
+            substitutionHeadNamespace = "http://www.example.com/medicines",
+            substitutionHeadName = "medicine")
+    public JAXBElement<Syrup> createSyrup(Syrup value) {
+        return new JAXBElement<>(SYRUP_QNAME, Syrup.class, null, value);
+    }
+
+    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "flavoring-syrup",
+            substitutionHeadNamespace = "http://www.example.com/medicines",
+            substitutionHeadName = "medicine")
     public JAXBElement<FlavoredSyrup> createFlavoredSyrup(FlavoredSyrup value) {
-        return new JAXBElement<FlavoredSyrup>(FLAVORED_SYRUP_QNAME, FlavoredSyrup.class, null, value);
+        return new JAXBElement<>(FLAVORED_SYRUP_QNAME, FlavoredSyrup.class, null, value);
     }
 }
 

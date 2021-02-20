@@ -30,7 +30,7 @@ public class MedicineHandler extends DefaultHandler {
 
 
 
-    private List<Medicine> medicines;
+    private final List<Medicine> medicines;
     private Medicine current;
     private String currentString;
 
@@ -43,9 +43,6 @@ public class MedicineHandler extends DefaultHandler {
         return medicines;
     }
 
-    public void setMedicines(List<Medicine> medicines) {
-        this.medicines = medicines;
-    }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes)  {
@@ -90,21 +87,22 @@ public class MedicineHandler extends DefaultHandler {
                 case DOSAGE_MILLIGRAMS:
                     Pill pill = (Pill) current;
                     pill.setDosageMilligrams(Integer.parseInt(stringElement));
+                    current = pill;
                     break;
                 case VOLUME_MILLILITERS:
                     Syrup syrup = (Syrup) current;
                     syrup.setVolumeMilliliters(Integer.parseInt(stringElement));
-                    current=syrup;
+                    current = syrup;
                     break;
                 case FLAVORING_TYPE:
                     FlavoredSyrup flavoredSyrup = (FlavoredSyrup) current;
-                    FlavoringType flavoringType = FlavoringType.valueOf(stringElement);
+                    FlavoringType flavoringType = FlavoringType.valueOf(stringElement.toUpperCase());
                     flavoredSyrup.setFlavoringType(flavoringType);
                     current = flavoredSyrup;
                 default:
 
             }
         }
-       // currentString = null;
+        currentString = null;
     }
 }

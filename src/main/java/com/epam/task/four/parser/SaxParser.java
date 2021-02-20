@@ -17,7 +17,7 @@ public class SaxParser implements Parser {
 
     public List<Medicine> parse(String file) throws ParserException {
         List<Medicine> medicines;
-        MedicineHandler medicineHandler = new MedicineHandler();
+        final MedicineHandler medicineHandler = new MedicineHandler();
 
         try {
             XMLReader xmlReader = XMLReaderFactory.createXMLReader();

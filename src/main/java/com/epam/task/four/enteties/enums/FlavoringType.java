@@ -1,16 +1,24 @@
 package com.epam.task.four.enteties.enums;
 
+
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(name = "flavoring-type")
+@XmlEnum
 public enum FlavoringType {
 
-    LIME("lime"), CHERRY("cherry"), APPLE("apple"), ORANGE("orange");
+    @XmlEnumValue("LIME")
+    LIME,
 
-    private String name;
+    @XmlEnumValue("CHERRY")
+    CHERRY,
 
-    FlavoringType(String name) {
-        this.name = name;
-    }
+    @XmlEnumValue("APPLE")
+    APPLE,
 
-    public String getName() {
-        return name;
-    }
+    @XmlEnumValue("ORANGE")
+    ORANGE;
+
 }

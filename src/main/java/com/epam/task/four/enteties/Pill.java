@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
 @XmlType (name = "pill",namespace = "http://www.example.com/medicines")
 public class Pill extends Medicine {
 
-    @XmlElement(name = "dosage-milligrams", namespace = "http://www.example.com/medicines", required = true)
+    @XmlElement(name = "dosage-milligrams")
     private int dosageMilligrams;
 
     public Pill(){

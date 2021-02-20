@@ -6,10 +6,11 @@ import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({FlavoredSyrup.class})
 @XmlType(name = "syrup",namespace = "http://www.example.com/medicines")
 public class Syrup extends Medicine {
 
-    @XmlElement(name = "volume-milliliters", namespace = "http://www.example.com/medicines", required = true)
+    @XmlElement(name = "volume-milliliters")
     private int volumeMilliliters;
 
     public Syrup(){

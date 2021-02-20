@@ -1,15 +1,16 @@
 <?xml version= "1.0" encoding= "UTF-8" ?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.example.com/medicines"
-        xmlns:tns="http://www.example.com/medicines"
-        elementFormDefault="qualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema"  targetNamespace="http://www.example.com/medicines"
+        xmlns:tns="http://www.example.com/medicines" elementFormDefault="qualified">
+    
+    <element name="medicine" type="tns:Medicine" abstract="true"></element>
+    <element name="pill" type="tns:Pill" substitutionGroup="tns:medicine"></element>
+    <element name="syrup" type="tns:Syrup" substitutionGroup="tns:medicine"></element>
+    <element name="flavored-syrup" type="tns:FlavoredSyrup" substitutionGroup="tns:syrup"></element>
 
     <element name="medicines">
         <complexType>
             <sequence>
-                <element name="pill" type="tns:Pill" minOccurs="0" maxOccurs="unbounded"/>
-                <element name="syrup" type="tns:Syrup" minOccurs="0" maxOccurs="unbounded"/>
-                <element name="flavored-syrup" type="tns:FlavoredSyrup" minOccurs="0" maxOccurs="unbounded"/>
+                <element ref="tns:medicine" minOccurs="2" maxOccurs="unbounded"/>
             </sequence>
         </complexType>
     </element>

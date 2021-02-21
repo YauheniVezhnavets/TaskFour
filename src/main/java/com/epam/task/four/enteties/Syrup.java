@@ -7,13 +7,13 @@ import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso({FlavoredSyrup.class})
-@XmlType(name = "syrup",namespace = "http://www.example.com/medicines")
+@XmlType(name = "Syrup")
 public class Syrup extends Medicine {
 
-    @XmlElement(name = "volume-milliliters")
+    @XmlElement(required = true, namespace = "http://www.example.com/medicines")
     private int volumeMilliliters;
 
-    public Syrup(){
+    public Syrup() {
     }
 
     public Syrup(String name, MedicineGroup medicineGroup, int shelfLife, int volumeMilliliters) {

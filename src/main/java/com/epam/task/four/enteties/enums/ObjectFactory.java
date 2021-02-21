@@ -12,14 +12,14 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName MEDICINE_QNAME =
-            new QName("http://www.example.com/medicines", "Medicine");
+            new QName("http://www.example.com/medicines", "medicine");
 
     private final static QName PILL_QNAME =
-            new QName("http://www.example.com/medicines", "Pill");
+            new QName("http://www.example.com/medicines", "pill");
     private final static QName SYRUP_QNAME =
-            new QName("http://www.example.com/medicines", "Syrup");
+            new QName("http://www.example.com/medicines", "syrup");
     private final static QName FLAVORED_SYRUP_QNAME =
-            new QName("http://www.example.com/medicines", "FlavoredSyrup");
+            new QName("http://www.example.com/medicines", "flavored-syrup");
 
 
     public ObjectFactory() {
@@ -48,21 +48,21 @@ public class ObjectFactory {
     }
 
 
-    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "pill",
+    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "Pill",
             substitutionHeadNamespace = "http://www.example.com/medicines",
             substitutionHeadName = "medicine")
     public JAXBElement<Pill> createPill(Pill value) {
         return new JAXBElement<>(PILL_QNAME, Pill.class, null, value);
     }
 
-    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "syrup",
+    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "Syrup",
             substitutionHeadNamespace = "http://www.example.com/medicines",
-            substitutionHeadName = "medicine")
+            substitutionHeadName = "Medicine")
     public JAXBElement<Syrup> createSyrup(Syrup value) {
         return new JAXBElement<>(SYRUP_QNAME, Syrup.class, null, value);
     }
 
-    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "flavoring-syrup",
+    @XmlElementDecl(namespace = "http://www.example.com/medicines", name = "FlavoredSyrup",
             substitutionHeadNamespace = "http://www.example.com/medicines",
             substitutionHeadName = "medicine")
     public JAXBElement<FlavoredSyrup> createFlavoredSyrup(FlavoredSyrup value) {

@@ -5,26 +5,19 @@ import com.epam.task.four.enteties.enums.MedicineGroup;
 import javax.xml.bind.annotation.*;
 
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType (name = "pill",namespace = "http://www.example.com/medicines")
+@XmlType(name = "Pill")
 public class Pill extends Medicine {
 
-    @XmlElement(name = "dosage-milligrams")
+    @XmlElement(required = true, namespace = "http://www.example.com/medicines")
     private int dosageMilligrams;
 
-    public Pill(){
+    public Pill() {
     }
 
     public Pill(String name, MedicineGroup medicineGroup, int shelfLife, int dosageMilligrams) {
         super(name, medicineGroup, shelfLife);
         this.dosageMilligrams = dosageMilligrams;
-    }
-
-    public Pill(Medicine current) {
-        super(current.getName(),
-                current.getMedicineGroup(),
-                current.getShelfLife());
     }
 
     public int getDosageMilligrams() {

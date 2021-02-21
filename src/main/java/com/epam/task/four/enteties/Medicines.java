@@ -7,14 +7,28 @@ import java.util.List;
 import java.util.Objects;
 
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "medicines")
 
+
+@XmlRootElement (name = "medicines", namespace = "http://www.example.com/medicines")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Medicines {
 
-    @XmlElementRef(name = "medicine", namespace = "http://www.example.com/medicines", type = JAXBElement.class)
+    @XmlElements({
+            @XmlElement(name = "pill", namespace = "http://www.example.com/medicines", type = Pill.class),
+            @XmlElement(name = "syrup", namespace = "http://www.example.com/medicines", type = Syrup.class),
+            @XmlElement(name = "flavored-syrup", namespace = "http://www.example.com/medicines", type = FlavoredSyrup.class)
+    })
+
+
     private List<JAXBElement<? extends Medicine>> medicineList;
+
+
+    public Medicines() {
+    }
+
+    public List<JAXBElement<? extends Medicine>> getMedicineList() {
+        return medicineList;
+    }
 
     public List<JAXBElement<? extends Medicine>> getMedicineJaxbElementList() {
         if (medicineList == null) {

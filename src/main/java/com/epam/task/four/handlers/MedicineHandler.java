@@ -30,7 +30,7 @@ public class MedicineHandler extends DefaultHandler {
 
 
 
-    private final List<Medicine> medicines;
+    private List<Medicine> medicines;
     private Medicine current;
     private String currentString;
 
@@ -57,7 +57,7 @@ public class MedicineHandler extends DefaultHandler {
                 current = new FlavoredSyrup();
                 break;
             default:
-                currentString = localName.toUpperCase();
+                currentString = localName.toLowerCase();
             }
         }
 
@@ -96,7 +96,7 @@ public class MedicineHandler extends DefaultHandler {
                     break;
                 case FLAVORING_TYPE:
                     FlavoredSyrup flavoredSyrup = (FlavoredSyrup) current;
-                    FlavoringType flavoringType = FlavoringType.valueOf(stringElement.toUpperCase());
+                    FlavoringType flavoringType = FlavoringType.valueOf(stringElement);
                     flavoredSyrup.setFlavoringType(flavoringType);
                     current = flavoredSyrup;
                 default:

@@ -7,11 +7,10 @@ import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "flavored-syrup",namespace = "http://www.example.com/medicines")
+@XmlType(name = "FlavoredSyrup")
 public class FlavoredSyrup extends Syrup {
 
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "flavoring-type")
+    @XmlElement(required = true, namespace = "http://www.example.com/medicines")
     private FlavoringType flavoring;
 
     public FlavoredSyrup() {

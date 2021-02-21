@@ -5,24 +5,22 @@ import com.epam.task.four.enteties.enums.MedicineGroup;
 import javax.xml.bind.annotation.*;
 
 
-
+@XmlType(name = "Medicine")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType (name = "medicine",namespace = "http://www.example.com/medicines")
 @XmlSeeAlso({
         Pill.class,
         Syrup.class
 })
 
 public abstract class Medicine {
-    @XmlElement(required = true)
+    @XmlElement(required = true, namespace = "http://www.example.com/medicines")
     private String name;
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "medicine-group")
+    @XmlElement(required = true, namespace = "http://www.example.com/medicines")
     private MedicineGroup medicineGroup;
-    @XmlElement(required = true)
+    @XmlElement(required = true, namespace = "http://www.example.com/medicines")
     private int shelfLife;
 
-    public Medicine(){
+    public Medicine() {
     }
 
     public Medicine(String name, MedicineGroup medicineGroup, int shelfLife) {

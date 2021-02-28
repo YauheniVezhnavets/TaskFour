@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
 @XmlType(name = "Syrup")
 public class Syrup extends Medicine {
 
-    @XmlElement(required = true, namespace = "http://www.example.com/medicines")
+    @XmlElement(name="volume-milliliters", required = true, namespace = "http://www.example.com/medicines")
     private int volumeMilliliters;
 
     public Syrup() {
@@ -31,15 +31,9 @@ public class Syrup extends Medicine {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        if (!super.equals(o)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         Syrup syrup = (Syrup) o;
 

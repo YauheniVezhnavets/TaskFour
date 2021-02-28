@@ -24,7 +24,7 @@ public abstract class ParserTest {
 
 
 
-    private final List<Medicine> EXPECTED = Arrays.asList(
+    private final static List<Medicine> EXPECTED = Arrays.asList(
             new Pill("Ibuclin", MedicineGroup.ANTIBIOTICS, 5, 10),
             new Syrup("Pikovit", MedicineGroup.VITAMINS,   2, 200),
             new FlavoredSyrup("Doctor Mom", MedicineGroup.PAIN_RELIVERS, 2, 200, FlavoringType.LIME));
@@ -39,7 +39,6 @@ public abstract class ParserTest {
     @Test
     public void testParseShouldParseWhenXmlFileIsCorrect() throws ParserException {
         List<Medicine> actual = parser.parse(VALID_XML);
-
         Assert.assertEquals(EXPECTED, actual);
     }
 

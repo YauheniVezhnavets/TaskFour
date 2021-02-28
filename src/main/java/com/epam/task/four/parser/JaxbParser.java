@@ -19,35 +19,49 @@ import java.util.List;
 
 public class JaxbParser implements Parser {
     private static final Logger LOGGER = LogManager.getLogger(JaxbParser.class);
-    private static final String SCHEMA_NAME = "src/main/resources/medicines.xsd";
 
-
-    public List<Medicine> parse(String file) throws ParserException {
-        JAXBContext jaxbContext;
-        Medicines medicines;
+    // private static final String SCHEMA_NAME = "src/main/resources/medicines.xsd";
+    public List<Medicine> parse(String filename) throws ParserException {
         try {
-            jaxbContext = JAXBContext.newInstance(Medicines.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Medicines.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            File schemaLocation = new File(SCHEMA_NAME);
 
-            Schema schema = factory.newSchema(schemaLocation);
-            unmarshaller.setSchema(schema);
-            medicines = (Medicines) unmarshaller.unmarshal(new File(file));
-            return  parseMedicines(medicines.getMedicineJaxbElementList());
-        } catch (JAXBException | SAXException e) {
-            throw new ParserException(e.getMessage(),e);
+            Medicines medicines = (Medicines) unmarshaller.unmarshal(new File(filename));
+
+            return medicines.getMedicines();
+
+
+        } catch (JAXBException e) {
+            throw new ParserException(e);
         }
     }
 
-    public List<Medicine> parseMedicines(List<JAXBElement<? extends Medicine>> medicineList) throws JAXBException {
-        List<Medicine> medicines = new ArrayList<>();
-        for (JAXBElement element : medicineList) {
-            Medicine medicine = (Medicine) element.getValue();
-            medicines.add(medicine);
-        }
-        return medicines;
-    }
+//    public List<Medicine> parse(String file) throws ParserException {
+//        JAXBContext jaxbContext;
+//        Medicines medicines;
+//        try {
+//            jaxbContext = JAXBContext.newInstance(Medicines.class);
+//            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+//            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+//            File schemaLocation = new File(SCHEMA_NAME);
+//
+//            Schema schema = factory.newSchema(schemaLocation);
+//            unmarshaller.setSchema(schema);
+//            medicines = (Medicines) unmarshaller.unmarshal(new File(file));
+//            return  parseMedicines(medicines.getMedicineJaxbElementList());
+//        } catch (JAXBException | SAXException e) {
+//            throw new ParserException(e.getMessage(),e);
+//        }
+//    }
+//
+//    public List<Medicine> parseMedicines(List<JAXBElement<? extends Medicine>> medicineList) throws JAXBException {
+//        List<Medicine> medicines = new ArrayList<>();
+//        for (JAXBElement <? extends Medicine> element : medicineList) {
+//            Medicine medicine = element.getValue();
+//            medicines.add(medicine);
+//        }
+//        return medicines;
+//    }
 }
 
 

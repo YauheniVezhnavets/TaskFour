@@ -9,7 +9,3 @@ public class DomParserTest extends ParserTest {
 }
 
 
-//TaskFour.iml
-
-//<?xml version="1.0" encoding="UTF-8"?>
-//<module type="JAVA_MODULE" version="1.8" />

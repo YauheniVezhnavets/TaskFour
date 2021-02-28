@@ -1,11 +1,9 @@
 package com.epam.task.four.enteties;
 
-import javax.xml.bind.JAXBElement;
+
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 
 
 
@@ -20,45 +18,34 @@ public class Medicines {
     })
 
 
-    private List<JAXBElement<? extends Medicine>> medicineList;
 
+    private List <Medicine> medicines = new ArrayList<>();
 
     public Medicines() {
     }
 
-    public List<JAXBElement<? extends Medicine>> getMedicineList() {
-        return medicineList;
+    public List<Medicine> getMedicines() {
+        return medicines;
     }
 
-    public List<JAXBElement<? extends Medicine>> getMedicineJaxbElementList() {
-        if (medicineList == null) {
-            medicineList = new ArrayList<>();
-        }
-        return this.medicineList;
+    public void setMedicines(List<Medicine> medicines) {
+        this.medicines = medicines;
     }
+
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        Medicines medicines = (Medicines) o;
+        Medicines medicines1 = (Medicines) o;
 
-        return Objects.equals(medicineList, medicines.medicineList);
+        return getMedicines() != null ? getMedicines().equals(medicines1.getMedicines()) : medicines1.getMedicines() == null;
     }
 
     @Override
     public int hashCode() {
-        return medicineList != null ? medicineList.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return "Medicines{" + "medicineList=" + medicineList + '}';
+        return getMedicines() != null ? getMedicines().hashCode() : 0;
     }
 }
 

@@ -55,21 +55,13 @@ public abstract class Medicine {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Medicine medicine = (Medicine) o;
 
-        if (getShelfLife() != medicine.getShelfLife()) {
-            return false;
-        }
-        if (getName() != null ? !getName().equals(medicine.getName()) : medicine.getName() != null) {
-            return false;
-        }
+        if (getShelfLife() != medicine.getShelfLife()) return false;
+        if (getName() != null ? !getName().equals(medicine.getName()) : medicine.getName() != null) return false;
         return getMedicineGroup() == medicine.getMedicineGroup();
     }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<medicines
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.com/medicines"
+        xsi:schemaLocation="http://www.example.com/medicines medicines.xsd">
+
+
+    <pill>
+        <name>Ibuclin</name>
+        <medicine-group>ANTIBIOTICS</medicine-group>
+        <shelf-life>5</shelf-life>
+        <dosage-milligrams>10</dosage-milligrams>
+    </pill>
+    <syrup>
+        <name>Pikovit</name>
+        <medicine-group>VITAMINS</medicine-group>
+        <shelf-life>2</shelf-life>
+        <volume-milliliters>200</volume-milliliters>
+    </syrup>
+    <flavored-syrup>
+        <name>Doctor Mom</name>
+        <medicine-group>PAIN_RELIVERS</medicine-group>
+        <shelf-life>2</shelf-life>
+        <volume-milliliters>200</volume-milliliters>
+        <flavoring-type>LIME</flavoring-type>
+    </flavored-syrup>
+</medicines>
